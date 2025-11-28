@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dados Recebidos - Bootstrap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5 sm-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-sm-6">
+        <div class="p-4 border rounded bg-light shadow">
+          <h2 class="mb-4 text-center">Dados Recebidos</h2>
+          <p id="saida" class="fs-5"></p>
+          <a href="forms1.html" class="btn btn-secondary mt-3 w-100">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const nome = params.get("nome");
+    const n1 = params.get("n1");
+    const n2 = params.get("n2");
+    const n3 = params.get("n2");
+
+    const saida = document.getElementById("saida");
+    const media = (Number(n1) + Number(n2) + Number(n3)) / 3;
+    let resposta;
+
+    if (media >= 7 ){
+    resposta = "Aprovado";
+    }
+    if (media < 5){
+    resposta = "Retido";
+    }
+    else{
+    resposta = "Recuperação";
+    }
+    
+
+    saida.innerHTML = `<strong>Nome:</strong> ${nome}<br><strong>Nota 1:</strong> ${n1}
+    <br><strong>Nota 2:</strong> ${n2}<br><strong>Nota 3:</strong> ${n3}<br><strong>Media :</strong> ${media}
+    <br><strong>Resultado :</strong> ${resposta} `;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
